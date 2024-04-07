@@ -1,4 +1,4 @@
-# DPO is proud to be the largest and the fastest-growing African payment gateway. We offer small and medium-sized businesses, right up to global companies, the solution, the technology, the opportunity, and the support to make and receive online payments wherever and whenever they want.
+DPO is proud to be the largest and the fastest-growing African payment gateway. We offer small and medium-sized businesses, right up to global companies, the solution, the technology, the opportunity, and the support to make and receive online payments wherever and whenever they want.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/epmnzava/dpo.svg?style=flat-square)](https://packagist.org/packages/epmnzava/dpo)
 [![Total Downloads](https://img.shields.io/packagist/dt/epmnzava/dpo.svg?style=flat-square)](https://packagist.org/packages/epmnzava/dpo)
