@@ -24,7 +24,7 @@ class Dpo
 
     public function createToken()
     {
-        $xmlData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><API3G><CompanyToken>" . config("dpo.company_token") . "</CompanyToken><Request>createToken</Request><Transaction><PaymentAmount>" . $this->amount . "</PaymentAmount><PaymentCurrency>" . $this->currency . "</PaymentCurrency><CompanyRef>" . $this->reference . "</CompanyRef><RedirectURL>" . config("dpo.redirect_url") . "</RedirectURL><BackURL>" . config("dpo.back_url") . " </BackURL><CompanyRefUnique>" . $this->company_ref_unique . "</CompanyRefCompanyRefUnique><PTL>5</PTL></Transaction><Services><Service><ServiceType>" . $this->service_type . "</ServiceType><ServiceDescription>" . $this->service_description . "</ServiceDescription><ServiceDate>" . now() . "</ServiceDate></Service></Services></API3G>";
+        $xmlData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><API3G><CompanyToken>" . config("dpo.company_token") . "</CompanyToken><Request>createToken</Request><Transaction><PaymentAmount>" . $this->amount . "</PaymentAmount><PaymentCurrency>" . $this->currency . "</PaymentCurrency><CompanyRef>" . $this->reference . "</CompanyRef><RedirectURL>http://www.domain.com/payurl.php</RedirectURL><BackURL>http://www.domain.com/backurl.php </BackURL><CompanyRefUnique>0</CompanyRefUnique><PTL>5</PTL></Transaction><Services><Service><ServiceType>" . $this->service_type . "</ServiceType><ServiceDescription>" . $this->service_description . "</ServiceDescription><ServiceDate>" . now()->format("Y/m/d H:i") . "</ServiceDate></Service></Services></API3G>";
 
 
         $ch = curl_init();
