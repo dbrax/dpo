@@ -44,6 +44,14 @@ class Dpo
         curl_close($ch);
         return $result;
     }
+    public function online_checkout()
+    {
+
+        $token_response = json_decode(json_encode(simplexml_load_string($this->createToken())), true);
+
+        $token = $token_response["TransToken"];
+        return config("dpo.payment_url") . "" . $token;
+    }
 
     public function verify_token()
     {
