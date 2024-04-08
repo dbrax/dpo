@@ -2,7 +2,7 @@ DPO is proud to be the largest and the fastest-growing African payment gateway. 
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/epmnzava/dpo.svg?style=flat-square)](https://packagist.org/packages/epmnzava/dpo)
 [![Total Downloads](https://img.shields.io/packagist/dt/epmnzava/dpo.svg?style=flat-square)](https://packagist.org/packages/epmnzava/dpo)
-![GitHub Actions](https://github.com/epmnzava/dpo/actions/workflows/main.yml/badge.svg)
+![GitHub Actions](https://github.com/dbrax/dpo/actions/workflows/main.yml/badge.svg)
 
 This is a wrapper to help laravel developers to easily integrate with direct pay online (dpo).
 
