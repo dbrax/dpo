@@ -51,7 +51,29 @@ class Dpo
         return config("dpo.payment_url") . "" . $token;
     }
 
-    public function verify_token()
+    public function verify_token($transaction_token)
     {
+
+        $xmlData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><API3G><CompanyToken>" . config("dpo.company_token") . "</CompanyToken><Request>verifyToken</Request><TransactionToken>" . $transaction_token . "</TransactionToken></API3G>";
+
+
+
+        $ch = curl_init();
+
+        if (!$ch) {
+            die("Couldn't initialize a cURL handle");
+        }
+        curl_setopt($ch, CURLOPT_URL, config("dpo.endpoint"));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/xml'));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $xmlData);
+
+        $result = curl_exec($ch);
+
+        curl_close($ch);
+        $token_verification = json_decode(json_encode(simplexml_load_string($result)), true);
+        return $token_verification;
     }
 }
