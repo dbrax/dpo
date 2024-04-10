@@ -14,11 +14,11 @@ class Dpo
     {
     }
 
-    public function createToken($reference, $amount, $currency, $service_type, $service_description)
+    public function createToken($reference, $amount, $currency, $service_type, $service_description, $redirect_url)
     {
 
 
-        $xmlData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><API3G><CompanyToken>" . config("dpo.company_token") . "</CompanyToken><Request>createToken</Request><Transaction><PaymentAmount>" . $amount . "</PaymentAmount><PaymentCurrency>" . $currency . "</PaymentCurrency><CompanyRef>" . $reference . "</CompanyRef><RedirectURL>" . config("dpo.redirect_url") . "</RedirectURL><BackURL>" . config("dpo.back_url") . " </BackURL><CompanyRefUnique>0</CompanyRefUnique><PTL>5</PTL></Transaction><Services><Service><ServiceType>" . $service_type . "</ServiceType><ServiceDescription>" . $service_description . "</ServiceDescription><ServiceDate>" . now()->format("Y/m/d H:i") . "</ServiceDate></Service></Services></API3G>";
+        $xmlData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><API3G><CompanyToken>" . config("dpo.company_token") . "</CompanyToken><Request>createToken</Request><Transaction><PaymentAmount>" . $amount . "</PaymentAmount><PaymentCurrency>" . $currency . "</PaymentCurrency><CompanyRef>" . $reference . "</CompanyRef><RedirectURL>" . $redirect_url . "</RedirectURL><BackURL>" . config("dpo.back_url") . " </BackURL><CompanyRefUnique>0</CompanyRefUnique><PTL>5</PTL></Transaction><Services><Service><ServiceType>" . $service_type . "</ServiceType><ServiceDescription>" . $service_description . "</ServiceDescription><ServiceDate>" . now()->format("Y/m/d H:i") . "</ServiceDate></Service></Services></API3G>";
 
 
         $ch = curl_init();
@@ -38,10 +38,10 @@ class Dpo
         curl_close($ch);
         return $result;
     }
-    public function online_checkout($reference, $amount, $currency, $service_type, $service_description)
+    public function online_checkout($reference, $amount, $currency, $service_type, $service_description, $redirect_url)
     {
 
-        $token_response = json_decode(json_encode(simplexml_load_string($this->createToken($reference, $amount, $currency, $service_type, $service_description))), true);
+        $token_response = json_decode(json_encode(simplexml_load_string($this->createToken($reference, $amount, $currency, $service_type, $service_description, $redirect_url))), true);
 
         $token = $token_response["TransToken"];
         return config("dpo.payment_url") . "" . $token;

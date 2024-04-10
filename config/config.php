@@ -9,7 +9,6 @@ return [
 
     "company_token" => env("DPO_COMPANY_TOKEN"),
 
-    "redirect_url" => env("DPO_REDIRECT_URL"),
 
     "back_url" => env("DPO_BACK_URL"),
 ];
